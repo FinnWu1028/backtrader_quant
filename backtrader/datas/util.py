@@ -16,16 +16,40 @@ def get_all_codes():
     
     stock_codes = []
     data = pro.stock_basic(exchange='', list_status='L', fields='ts_code,symbol,name,area,industry,list_date')
-    print(type(data))
-    print(data)
+    # print(type(data))
+    # print(data)
     for indexs in data.index:
-        stock_codes.append(data.loc[indexs].values[1])
-        # print(data.loc[indexs].values[0:-1])
+        stock_codes.append(data.loc[indexs].values[0])
+        # print(data.loc[indexs].values[0])
     
+    print('stocks has %d codes' % len(stock_codes))
 
-    print(len(stock_codes))
+
+def get_all_dates(start=None, end=None):
+
+    dates = []
+    df = []
+    pro = get_ts_pro()
+
+    if start is None or end is None:
+        print('start or end is None')
+        return None
+    
+    
+    df = pro.trade_cal(exchange='', start_date=start, end_date=end)
+    
+    for indexs in df.index:
+        
+        if df.loc[indexs].values[2] == 1:
+            dates.append(df.loc[indexs].values[1])
+        
+    
+    print('dates has %d days from %s to %s ' % (len(dates), start, end))
+
+if __name__ == '__main__':
+    # get_all_codes()
+    start   = '20190101'
+    end     = '20190201'
+    get_all_dates(start=start, end=end)
 
 
-def get_all_dates():
-    print('date')
-    pass
