@@ -1,4 +1,5 @@
 import tushare as ts 
+import math
 
 
 def get_ts_pro():
@@ -25,6 +26,22 @@ def get_all_codes():
     print('stocks has %d codes' % len(stock_codes))
 
 
+    stock_sp_col = [x for x in range(len(stock_codes))]
+    print(stock_sp_col)
+    
+    for i in stock_sp_col:
+        stock_sp_col[i] = math.ceil(i / 100)
+    
+    stock_sp_col[0] = 1
+    stock_dict = dict(zip(stock_codes, stock_sp_col))
+    
+    return stock_dict
+
+
+def save_stock_dict_to_db():
+    pass
+
+
 def get_all_dates(start=None, end=None):
 
     dates = []
@@ -47,7 +64,7 @@ def get_all_dates(start=None, end=None):
     print('dates has %d days from %s to %s ' % (len(dates), start, end))
 
 if __name__ == '__main__':
-    # get_all_codes()
+    get_all_codes()
     start   = '20190101'
     end     = '20190201'
     get_all_dates(start=start, end=end)
