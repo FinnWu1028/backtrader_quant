@@ -1,0 +1,14 @@
+7.9
+
+
+7.10
+windows
+安装talib
+下载talib安装包whl，离线安装
+linux
+下载源码，安装
+git clone https://github.com/mrjbq7/ta-lib.git
+pip install TA-lib
+
+
+
