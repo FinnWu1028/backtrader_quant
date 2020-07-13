@@ -53,7 +53,7 @@ class Crawler:
         #     )
         # )
         collection_name = 'db' + str(db)
-        print(collection_name)
+        # print(collection_name)
 
         # if len(update_requests) > 0:
         #     pass

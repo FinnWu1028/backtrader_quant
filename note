@@ -12,3 +12,9 @@ pip install TA-lib
 
 
 
+7.13
+datafeeds
+    self.data  self.datas[0]
+    self.datax self.datas[x]
+
+    
